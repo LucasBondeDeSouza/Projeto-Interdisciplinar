@@ -6,11 +6,13 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.http.HttpSession;
 import model.DAO;
-import model.Javabeans;
+import model.Usuario;
+import model.Venda;
 
 @WebServlet(urlPatterns = {
     "/controller", "/main", "/insert", "/login"
@@ -19,7 +21,7 @@ public class Controller extends HttpServlet {
     private static final long serialVersionUID = 1L;
     
     DAO dao = new DAO();
-    Javabeans usuario = new Javabeans();
+    Usuario usuario = new Usuario();
 
     public Controller() {
         super();
@@ -48,9 +50,9 @@ public class Controller extends HttpServlet {
     }
 
     protected void usuarios(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        ArrayList<Javabeans> lista = dao.listarUsuarios();
+        ArrayList<Usuario> lista = dao.listarUsuarios();
         request.setAttribute("usuarios", lista);
-        jakarta.servlet.RequestDispatcher rd = request.getRequestDispatcher("agenda.jsp");
+        jakarta.servlet.RequestDispatcher rd = request.getRequestDispatcher("login.html");
         rd.forward(request, response);
     }
 
@@ -69,7 +71,7 @@ public class Controller extends HttpServlet {
         if (loginValido) {
             HttpSession session = (HttpSession) request.getSession();
             session.setAttribute("email", email);
-            response.sendRedirect("menu.jsp");
+            response.sendRedirect("menu.html");
         } else {
             request.setAttribute("erro",  "Email ou Senha Inválidos");
             request.getRequestDispatcher("login.html").forward(request, response);

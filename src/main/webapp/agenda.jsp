@@ -1,13 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<%@ page import="model.Javabeans"%>
+<%@ page import="model.Usuario"%>
 <%@ page import="java.util.ArrayList"%>
-<%@ page import="model.Javabeans" %>
+<%@ page import="model.Usuario" %>
 <%@ page import="java.util.ArrayList"%>
 
 <%
-ArrayList<Javabeans> lista = (ArrayList<Javabeans>)request.getAttribute("usuarios");
+ArrayList<Usuario> lista = (ArrayList<Usuario>)request.getAttribute("usuarios");
 %>
     
 <!DOCTYPE html>

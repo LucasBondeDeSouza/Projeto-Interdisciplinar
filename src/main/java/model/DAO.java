@@ -1,9 +1,11 @@
 package model;
 
+import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class DAO {
@@ -27,7 +29,7 @@ public class DAO {
         }
     }
 
-    public void inserirUsuario(Javabeans usuario) {
+    public void inserirUsuario(Usuario usuario) {
         String create = "insert into usuarios (nome, email, senha) values (?,?,?)";
 
         try {
@@ -52,8 +54,8 @@ public class DAO {
         }
     }
 
-    public ArrayList<Javabeans> listarUsuarios() {
-        ArrayList<Javabeans> usuarios = new ArrayList<>();
+    public ArrayList<Usuario> listarUsuarios() {
+        ArrayList<Usuario> usuarios = new ArrayList<>();
         String read = "select * from usuarios order by nome";
 
         try {
@@ -67,7 +69,7 @@ public class DAO {
                 String email = rs.getString(3);
                 String senha = rs.getString(4);
 
-                usuarios.add(new Javabeans(iduser, nome, email, senha));
+                usuarios.add(new Usuario(iduser, nome, email, senha));
             }
             con.close();
         } catch (Exception e) {

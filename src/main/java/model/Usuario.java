@@ -1,6 +1,6 @@
 package model;
 
-public class Javabeans {
+public class Usuario {
 
 	private String iduser;
 	private String nome;
@@ -8,7 +8,7 @@ public class Javabeans {
 	private String senha;
 	
 	// Constructors
-	public Javabeans(String iduser, String nome, String email, String senha) {
+	public Usuario(String iduser, String nome, String email, String senha) {
 		super();
 		this.iduser = iduser;
 		this.nome = nome;
@@ -16,7 +16,7 @@ public class Javabeans {
 		this.senha = senha;
 	}
 	
-	public Javabeans() {
+	public Usuario() {
 		super();
 	}
 	
