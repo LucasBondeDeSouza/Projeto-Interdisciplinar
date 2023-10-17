@@ -25,6 +25,11 @@
         -webkit-appearance: none;
         margin: 0;
     }
+    
+    input[type="button"], .btn {
+		font-size: 18px;
+		font-weight: 800;
+	}
 
     .form-control {
         width: 100%; 
@@ -35,6 +40,18 @@
     label {
         font-size: 18px;
         color: #fff;
+    }
+    
+    select[name="categoria"] {
+        width: 100%;
+        font-size: 18px;
+        font-weight: 600;
+        padding: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #000;
+        color: #fff;
+        border: none;
     }
 </style>
 
@@ -89,28 +106,39 @@
                     <form class="form-floating mb-3" name="frmVenda" action="insert">
 						<!-- <input type="hidden" name="action" value="cadastrarVenda"> -->
 						<!-- <input type="hidden" name="usuario_id" value="${sessionScope.userId}" -->
+						<div class="form-floating mb-3">
+                            <input type="text" name="comprador" class="form-control" id="floatingText" placeholder="Nome...">
+                            <label for="floatingText"><Strong>Comprador</Strong></label>
+                        </div>
                         <div class="form-floating mb-3">
-                            <input type="text" name="nome_produto" class="form-control" id="floatingText" placeholder="Nome...">
+                             <select name="categoria" id="nomeCategoria">
+                                <option value="" selected disabled><strong>Categoria</strong></option>
+                                <option value="E-commerce"><strong>E-commerce</strong></option>
+                                <option value="Loja Física"><strong>Loja Física</strong></option>
+                             </select>
+                        </div> 
+                        <div class="form-floating mb-3">
+                            <input type="text" name="nomeProduto" class="form-control" id="floatingText" placeholder="Nome...">
                             <label for="floatingText"><Strong>Nome Produto</Strong></label>
                         </div>
                         <div class="form-floating mb-3">
-                            <input type="date" name="data_venda" class="form-control" id="floatingInput" placeholder="nome@exemplo.com">
+                            <input type="date" name="dataVenda" class="form-control" id="floatingInput" placeholder="nome@exemplo.com">
                             <label for="floatingInput"><Strong>Data da Venda</Strong></label>
                         </div>
-                        <div class="form-floating mb-4">
-                             <input type="number" name="quantidade_produto" class="form-control" id="floatingPassword" placeholder="Senha...">
+                        <div class="form-floating mb-3">
+                             <input type="number" name="quantidade" class="form-control" id="floatingPassword" placeholder="Senha...">
                              <label for="floatingPassword"><Strong>Quantidade</Strong></label>
                         </div>
-                        <div class="form-floating mb-4">
-                             <input type="number" name="valor_produto" class="form-control" id="floatingPassword" placeholder="Senha...">
-                             <label for="floatingPassword"><Strong>Valor do Produto</Strong></label>
+                        <div class="form-floating mb-3">
+                             <input type="number" name="valorUnitario" class="form-control" id="floatingPassword" placeholder="Senha...">
+                             <label for="floatingPassword"><Strong>Valor Unitário</Strong></label>
                         </div>
-                        <div class="form-floating mb-4">
-                             <input type="text" name="nome_vendedor" class="form-control" id="floatingPassword" placeholder="Senha...">
+                        <div class="form-floating mb-3">
+                             <input type="text" name="vendedor" class="form-control" id="floatingPassword" placeholder="Senha...">
                              <label for="floatingPassword"><Strong>Nome Vendedor(a)</Strong></label>
                         </div>
                         
-                        <input type="button" class="btn btn-primary py-3 w-100 mb-4" value="Cadastrar" onclick="validar()">
+                        <input type="button" class="btn btn-primary py-3 w-100 mb-4" value="Cadastrar" onclick="vendaValidar()">
                     </form>
                 </div>
             </div>
@@ -120,7 +148,7 @@
 
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="scripts/validarVenda.js"></script>
+    <script src="scripts/validandoVenda.js"></script>
     <script src="resources/js/main.js"></script>
 </body>
 </html>

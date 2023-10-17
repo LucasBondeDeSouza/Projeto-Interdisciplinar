@@ -6,14 +6,16 @@ public class Usuario {
 	private String nome;
 	private String email;
 	private String senha;
+	private String cargo;
 	
 	// Constructors
-	public Usuario(String iduser, String nome, String email, String senha) {
+	public Usuario(String iduser, String nome, String email, String senha, String cargo) {
 		super();
 		this.iduser = iduser;
 		this.nome = nome;
 		this.email = email;
 		this.senha = senha;
+		this.cargo = cargo;
 	}
 	
 	public Usuario() {
@@ -51,5 +53,13 @@ public class Usuario {
 
 	public void setSenha(String senha) {
 		this.senha = senha;
+	}
+	
+	public String getCargo() {
+		return cargo;
+	}
+
+	public void setCargo(String cargo) {
+		this.cargo = cargo;
 	}
 }

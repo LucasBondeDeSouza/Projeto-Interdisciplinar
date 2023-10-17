@@ -1,10 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+    
+<%@ page import="model.Venda" %>
+<%@ page import="java.util.ArrayList" %>
+<%
+ArrayList<Venda> listaDeVendas = (ArrayList<Venda>) request.getAttribute("vendas"); // Obtenha a lista do atributo "vendas" do request
+%>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8">
-<title>Tabela</title>
+<title>Tabela Vendas</title>
 
 <!-- Google Web Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Roboto:wght@500;700&display=swap" rel="stylesheet"> 
@@ -113,29 +120,29 @@
                             <thead>
                                 <tr>
                                     <th scope="col">#</th>
-                                    <th scope="col">Nome Produto</th>
-                                    <th scope="col">Data da Venda</th>
+                                    <th scope="col">Comprador</th>
+                                    <th scope="col">Categoria</th>
+                                    <th scope="col">Produto</th>
+                                    <th scope="col">Data</th>
                                     <th scope="col">Quantidade</th>
-                                    <th scope="col">Valor do Produto</th>
-                                    <th scope="col">Total</th>
-                                    <th scope="col">Vendedor</th>
+                                    <th scope="col">Valor Unitário</th>
+                                    <th scope="col">Vendedor(a)</th>
                                     <th scope="col">Ações</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Produto 01</td>
-                                    <td>14/10/2023</td>
-                                    <td>2</td>
-                                    <td>R$123</td>
-                                    <td>R$246</td>
-                                    <td>Vendedor 01</td>
-                                    <td>
-                                        <input type="button" class="btn btn-primary mb-1" value="Editar">
-                                        <input type="button" class="btn btn-danger mb-1" value="Excluir">
-                                    </td>
-                                </tr>
+                                <% for (int i = 0; i < listaDeVendas.size(); i++){ %>
+                                      <tr>
+                                         <td><%=listaDeVendas.get(i).getIdvenda()%></td>
+                                         <td><%=listaDeVendas.get(i).getComprador()%></td>
+                                         <td><%=listaDeVendas.get(i).getCategoria()%></td>
+                                         <td><%=listaDeVendas.get(i).getNomeProduto()%></td>
+                                         <td><%=listaDeVendas.get(i).getDataVenda()%></td>
+                                         <td><%=listaDeVendas.get(i).getQuantidade()%></td>
+                                         <td><%=listaDeVendas.get(i).getValorUnitario()%></td>
+                                         <td><%=listaDeVendas.get(i).getVendedor()%></td>
+                                      </tr>
+                               <%}%>
                             </tbody>
                         </table>
 

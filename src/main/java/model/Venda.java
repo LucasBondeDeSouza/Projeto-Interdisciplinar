@@ -1,39 +1,33 @@
 package model;
 
-import java.math.BigDecimal;
-
 public class Venda {
 
-	private String usuarioId;
 	private String idvenda;
-	private String nome_produto;
-	private String data_venda;
-	private int quantidade_produto;
-	private BigDecimal valor_produto;
-	private String nome_vendedor;
+	private String comprador;
+	private String categoria;
+	private String nomeProduto;
+	private String dataVenda;
+	private int quantidade;
+	private float valorUnitario;
+	private String vendedor;
 	
-	public Venda(String idvenda, String nome_produto, String data_venda, int quantidade_produto, BigDecimal valor_produto, String nome_vendedor) {
+	public Venda(String idvenda, String comprador, String categoria, String nomeProduto, String dataVenda, int quantidade,
+			float valorUnitario, String vendedor) {
 		super();
 		this.idvenda = idvenda;
-		this.nome_produto = nome_produto;
-		this.data_venda = data_venda;
-		this.quantidade_produto = quantidade_produto;
-		this.valor_produto = valor_produto;
-		this.nome_vendedor = nome_vendedor;
+		this.comprador = comprador;
+		this.categoria = categoria;
+		this.nomeProduto = nomeProduto;
+		this.dataVenda = dataVenda;
+		this.quantidade = quantidade;
+		this.valorUnitario = valorUnitario;
+		this.vendedor = vendedor;
 	}
-	
+
 	public Venda() {
 		super();
 	}
 	
-	public String getUsuarioId() {
-        return usuarioId;
-    }
-
-    public void setUsuarioId(String usuarioId) {
-        this.usuarioId = usuarioId;
-    }
-
 	public String getIdvenda() {
 		return idvenda;
 	}
@@ -42,49 +36,59 @@ public class Venda {
 		this.idvenda = idvenda;
 	}
 
-	public String getNome_produto() {
-		return nome_produto;
+	public String getComprador() {
+		return comprador;
 	}
 
-	public void setNome_produto(String nome_produto) {
-		this.nome_produto = nome_produto;
+	public void setComprador(String comprador) {
+		this.comprador = comprador;
 	}
 
-	public String getData_venda() {
-		return data_venda;
+	public String getCategoria() {
+		return categoria;
 	}
 
-	public void setData_venda(String data_venda) {
-		this.data_venda = data_venda;
+	public void setCategoria(String categoria) {
+		this.categoria = categoria;
 	}
 
-	public int getQuantidade_produto() {
-		return quantidade_produto;
+	public String getNomeProduto() {
+		return nomeProduto;
 	}
 
-	public void setQuantidade_produto(int quantidade_produto) {
-		this.quantidade_produto = quantidade_produto;
+	public void setNomeProduto(String nomeProduto) {
+		this.nomeProduto = nomeProduto;
 	}
 
-	public BigDecimal getValor_produto() {
-		return valor_produto;
+	public String getDataVenda() {
+		return dataVenda;
 	}
 
-	public void setValor_produto(BigDecimal valor_produto) {
-		this.valor_produto = valor_produto;
+	public void setDataVenda(String dataVenda) {
+		this.dataVenda = dataVenda;
 	}
 
-	public String getNome_vendedor() {
-		return nome_vendedor;
+	public int getQuantidade() {
+		return quantidade;
 	}
 
-	public void setNome_vendedor(String nome_vendedor) {
-		this.nome_vendedor = nome_vendedor;
+	public void setQuantidade(int quantidade) {
+		this.quantidade = quantidade;
 	}
-	
-	public BigDecimal valor_total() {
-       
-        BigDecimal quantidade = new BigDecimal(this.quantidade_produto);
-        return this.valor_produto.multiply(quantidade);
-    }
+
+	public float getValorUnitario() {
+		return valorUnitario;
+	}
+
+	public void setValorUnitario(float valorUnitario) {
+		this.valorUnitario = valorUnitario;
+	}
+
+	public String getVendedor() {
+		return vendedor;
+	}
+
+	public void setVendedor(String vendedor) {
+		this.vendedor = vendedor;
+	}
 }

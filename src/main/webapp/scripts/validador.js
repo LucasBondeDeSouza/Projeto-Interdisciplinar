@@ -2,27 +2,33 @@
  * 
  */
 
- function validarCadastro() {
-	 let nome = frmCadastro.nome.value
-	 let email = frmCadastro.email.value
-	 let senha = frmCadastro.senha.value
-	 
-	 if (nome === "") {
-		 alert("Preencha o campo Nome:")
-		 frmCadastro.nome.focus()
-		 return false
-	 } else if (email === "") {
-		 alert("Preencha o campo Email:")
-		 frmCadastro.email.focus()
-		 return false
-	 } else if (senha === "") {
-		 alert("Preencha o campo Senha:")
-		 frmCadastro.senha.focus()
-		 return false
-	 } else {
-		 document.forms["frmCadastro"].submit()
-	 }
- }
+function validarCadastro() {
+    let nome = frmCadastro.nome.value
+    let email = frmCadastro.email.value
+    let senha = frmCadastro.senha.value
+    let cargo = document.querySelector('input[name="cargo"]:checked')
+
+    if (nome === "") {
+        alert("Preencha o campo Nome.");
+        frmCadastro.nome.focus();
+        return false;
+    } else if (email === "") {
+        alert("Preencha o campo Email.");
+        frmCadastro.email.focus();
+        return false;
+    } else if (senha === "") {
+        alert("Preencha o campo Senha.");
+        frmCadastro.senha.focus();
+        return false;
+    } else if (!cargo) {
+		alert("Escolha 'Vendedor' ou 'Administrador'")
+		return false;
+	}
+     else {
+        document.forms["frmCadastro"].submit();
+    }
+}
+
  
  function validarLogin() {
 	 
