@@ -103,42 +103,38 @@
             <div class="container-fluid pt-4 px-4">
                 <div class="bg-secondary rounded h-100 p-4">
                     <h1 class="mb-4"><strong>Cadastrar Venda</strong></h1>
-                    <form class="form-floating mb-3" name="frmVenda" action="insert">
+                    <form class="form-floating mb-3" name="frmVenda" action="cadastrarVenda">
 						<!-- <input type="hidden" name="action" value="cadastrarVenda"> -->
 						<!-- <input type="hidden" name="usuario_id" value="${sessionScope.userId}" -->
 						<div class="form-floating mb-3">
-                            <input type="text" name="comprador" class="form-control" id="floatingText" placeholder="Nome...">
+                            <input type="text" name="comprador" class="form-control" id="floatingText" placeholder="Nome..." required>
                             <label for="floatingText"><Strong>Comprador</Strong></label>
                         </div>
                         <div class="form-floating mb-3">
-                             <select name="categoria" id="nomeCategoria">
+                             <select name="categoria" id="nomeCategoria" required>
                                 <option value="" selected disabled><strong>Categoria</strong></option>
                                 <option value="E-commerce"><strong>E-commerce</strong></option>
                                 <option value="Loja Física"><strong>Loja Física</strong></option>
                              </select>
                         </div> 
                         <div class="form-floating mb-3">
-                            <input type="text" name="nomeProduto" class="form-control" id="floatingText" placeholder="Nome...">
+                            <input type="text" name="nomeProduto" class="form-control" id="floatingText" placeholder="Nome..." required>
                             <label for="floatingText"><Strong>Nome Produto</Strong></label>
                         </div>
                         <div class="form-floating mb-3">
-                            <input type="date" name="dataVenda" class="form-control" id="floatingInput" placeholder="nome@exemplo.com">
+                            <input type="date" name="dataVenda" class="form-control" id="floatingInput" placeholder="nome@exemplo.com" required>
                             <label for="floatingInput"><Strong>Data da Venda</Strong></label>
                         </div>
                         <div class="form-floating mb-3">
-                             <input type="number" name="quantidade" class="form-control" id="floatingPassword" placeholder="Senha...">
+                             <input type="number" name="quantidade" class="form-control" id="floatingPassword" placeholder="Senha..." required>
                              <label for="floatingPassword"><Strong>Quantidade</Strong></label>
                         </div>
                         <div class="form-floating mb-3">
-                             <input type="number" name="valorUnitario" class="form-control" id="floatingPassword" placeholder="Senha...">
+                             <input type="number" name="valorUnitario" class="form-control" id="floatingPassword" placeholder="Senha..." required>
                              <label for="floatingPassword"><Strong>Valor Unitário</Strong></label>
                         </div>
-                        <div class="form-floating mb-3">
-                             <input type="text" name="vendedor" class="form-control" id="floatingPassword" placeholder="Senha...">
-                             <label for="floatingPassword"><Strong>Nome Vendedor(a)</Strong></label>
-                        </div>
                         
-                        <input type="button" class="btn btn-primary py-3 w-100 mb-4" value="Cadastrar" onclick="vendaValidar()">
+                        <input type="button" class="btn btn-primary py-3 w-100 mb-4" value="Cadastrar" onclick="validarVenda()">
                     </form>
                 </div>
             </div>
@@ -148,7 +144,7 @@
 
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="scripts/validandoVenda.js"></script>
+    <script src="scripts/validadorVenda.js"></script>
     <script src="resources/js/main.js"></script>
 </body>
 </html>

@@ -1,10 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
-    
-<%@ page import="model.Venda" %>
-<%@ page import="java.util.ArrayList" %>
+
+<%@ page import="model.Venda"%>
+<%@ page import="java.util.ArrayList"%>
+
+
 <%
-ArrayList<Venda> listaDeVendas = (ArrayList<Venda>) request.getAttribute("vendas"); // Obtenha a lista do atributo "vendas" do request
+ArrayList<Venda> lista = (ArrayList<Venda>)request.getAttribute("vendas");
 %>
 
 <!DOCTYPE html>
@@ -126,23 +128,22 @@ ArrayList<Venda> listaDeVendas = (ArrayList<Venda>) request.getAttribute("vendas
                                     <th scope="col">Data</th>
                                     <th scope="col">Quantidade</th>
                                     <th scope="col">Valor Unitário</th>
-                                    <th scope="col">Vendedor(a)</th>
                                     <th scope="col">Ações</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <% for (int i = 0; i < listaDeVendas.size(); i++){ %>
-                                      <tr>
-                                         <td><%=listaDeVendas.get(i).getIdvenda()%></td>
-                                         <td><%=listaDeVendas.get(i).getComprador()%></td>
-                                         <td><%=listaDeVendas.get(i).getCategoria()%></td>
-                                         <td><%=listaDeVendas.get(i).getNomeProduto()%></td>
-                                         <td><%=listaDeVendas.get(i).getDataVenda()%></td>
-                                         <td><%=listaDeVendas.get(i).getQuantidade()%></td>
-                                         <td><%=listaDeVendas.get(i).getValorUnitario()%></td>
-                                         <td><%=listaDeVendas.get(i).getVendedor()%></td>
-                                      </tr>
-                               <%}%>
+                                
+                                   <% for (int i = 0; i < lista.size(); i++){ %>
+                                        <tr>
+                                            <td><%=lista.get(i).getVendaId()%></td>
+                                            <td><%=lista.get(i).getComprador()%></td>
+                                            <td><%=lista.get(i).getCategoria()%></td>
+                                            <td><%=lista.get(i).getNomeProduto()%></td>
+                                            <td><%=lista.get(i).getDataVenda()%></td>
+                                            <td><%=lista.get(i).getQuantidade()%></td>
+                                            <td><%=lista.get(i).getValorUnitario()%></td>
+                                        </tr>
+                                  <%}%>
                             </tbody>
                         </table>
 

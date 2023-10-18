@@ -2,38 +2,36 @@ package model;
 
 public class Venda {
 
-	private String idvenda;
-	private String comprador;
-	private String categoria;
-	private String nomeProduto;
-	private String dataVenda;
-	private int quantidade;
-	private float valorUnitario;
-	private String vendedor;
-	
-	public Venda(String idvenda, String comprador, String categoria, String nomeProduto, String dataVenda, int quantidade,
-			float valorUnitario, String vendedor) {
+	private String vendaId;
+    private String comprador;
+    private String categoria;
+    private String nomeProduto;
+    private String dataVenda;
+    private String quantidade;
+    private String valorUnitario;
+    
+	public Venda(String vendaId, String comprador, String categoria, String nomeProduto, String dataVenda, String quantidade,
+			String valorUnitario) {
 		super();
-		this.idvenda = idvenda;
+		this.vendaId = vendaId;
 		this.comprador = comprador;
 		this.categoria = categoria;
 		this.nomeProduto = nomeProduto;
 		this.dataVenda = dataVenda;
 		this.quantidade = quantidade;
 		this.valorUnitario = valorUnitario;
-		this.vendedor = vendedor;
 	}
 
 	public Venda() {
 		super();
 	}
-	
-	public String getIdvenda() {
-		return idvenda;
+
+	public String getVendaId() {
+		return vendaId;
 	}
 
-	public void setIdvenda(String idvenda) {
-		this.idvenda = idvenda;
+	public void setVendaId(String vendaId) {
+		this.vendaId = vendaId;
 	}
 
 	public String getComprador() {
@@ -68,27 +66,19 @@ public class Venda {
 		this.dataVenda = dataVenda;
 	}
 
-	public int getQuantidade() {
+	public String getQuantidade() {
 		return quantidade;
 	}
 
-	public void setQuantidade(int quantidade) {
+	public void setQuantidade(String quantidade) {
 		this.quantidade = quantidade;
 	}
 
-	public float getValorUnitario() {
+	public String getValorUnitario() {
 		return valorUnitario;
 	}
 
-	public void setValorUnitario(float valorUnitario) {
+	public void setValorUnitario(String valorUnitario) {
 		this.valorUnitario = valorUnitario;
-	}
-
-	public String getVendedor() {
-		return vendedor;
-	}
-
-	public void setVendedor(String vendedor) {
-		this.vendedor = vendedor;
 	}
 }

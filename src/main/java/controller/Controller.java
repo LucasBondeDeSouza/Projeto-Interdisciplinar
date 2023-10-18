@@ -13,7 +13,7 @@ import model.Usuario;
 import model.Venda;
 
 @WebServlet(urlPatterns = {
-    "/controller", "/main", "/insert", "/login"
+    "/controller", "/main", "/insert", "/login", "/cadastrarVenda"
 })
 public class Controller extends HttpServlet {
     private static final long serialVersionUID = 1L;
@@ -33,9 +33,10 @@ public class Controller extends HttpServlet {
             usuarios(request, response);
         } else if (action.equals("/insert")) {
             novoUsuario(request, response);
-            novaVenda(request, response);
         } else if (action.equals("/login")) {
             request.getRequestDispatcher("login.html").forward(request, response);
+        } else if (action.equals("/cadastrarVenda")) {
+        	novaVenda(request, response);
         } else {
             response.sendRedirect("index.html");
         }
@@ -49,20 +50,29 @@ public class Controller extends HttpServlet {
         }
     }
 
+    
     protected void usuarios(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ArrayList<Usuario> lista = dao.listarUsuarios();
         request.setAttribute("usuarios", lista);
         jakarta.servlet.RequestDispatcher rd = request.getRequestDispatcher("login.html");
         rd.forward(request, response);
-    }
+    } 
 
     protected void novoUsuario(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         usuario.setNome(request.getParameter("nome"));
         usuario.setEmail(request.getParameter("email"));
-        usuario.setSenha(request.getParameter("senha"));
+        String senha = request.getParameter("senha");
         usuario.setCargo(request.getParameter("cargo"));
-        dao.inserirUsuario(usuario);
-        response.sendRedirect("main");
+        
+        if (senha != null) {
+        	usuario.setSenha(senha);
+        	dao.inserirUsuario(usuario);
+        	response.sendRedirect("main");
+        } else {
+        	String mensagemErro = "A senha é obrigatória. Preencha todos os campos.";
+            request.setAttribute("erro", mensagemErro);
+            request.getRequestDispatcher("login.html").forward(request, response);
+        }
     }
 
     protected void login(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -81,29 +91,23 @@ public class Controller extends HttpServlet {
     
     protected void novaVenda(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	
-    	String valorProdutoStr = request.getParameter("valorUnitario");
-    	float valorProduto = 0.0f;
-    	
-    	if (valorProdutoStr != null && !valorProdutoStr.isEmpty()) {
-    		valorProduto = Float.parseFloat(valorProdutoStr);
-    	}
-    	
     	venda.setComprador(request.getParameter("comprador"));
     	venda.setCategoria(request.getParameter("categoria"));
     	venda.setNomeProduto(request.getParameter("nomeProduto"));
     	venda.setDataVenda(request.getParameter("dataVenda"));
-    	venda.setQuantidade(Integer.parseInt(request.getParameter("quantidade")));
-    	venda.setValorUnitario(valorProduto);
-    	venda.setVendedor(request.getParameter("vendedor"));
+    	venda.setQuantidade(request.getParameter("quantidade"));
+    	venda.setValorUnitario(request.getParameter("valorUnitario"));
     	
     	dao.inserirVenda(venda);
-    	response.sendRedirect("main");
+    	
+    	vendas(request, response);
+    	response.sendRedirect("cadastrarVenda.html");
     }
     
     protected void vendas(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        ArrayList<Venda> listaDeVendas = dao.listarVendas(); // Chame o método que obtém a lista de vendas da classe DAO
-        request.setAttribute("vendas", listaDeVendas); // Atribua a lista ao atributo "vendas" do request
-        request.getRequestDispatcher("tabela.jsp").forward(request, response); // Encaminhe a solicitação para a página JSP
+        ArrayList<Venda> lista = dao.listarVendas();
+        request.setAttribute("vendas", lista);
+        jakarta.servlet.RequestDispatcher rd = request.getRequestDispatcher("cadastrarVenda.html");
+        rd.forward(request, response);
     }
-
 }

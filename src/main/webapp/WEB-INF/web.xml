@@ -14,4 +14,34 @@
   <welcome-file-list>
     <welcome-file>login.html</welcome-file>
   </welcome-file-list>
+  <servlet>
+    <description></description>
+    <display-name>UsuarioController</display-name>
+    <servlet-name>UsuarioController</servlet-name>
+    <servlet-class>controller.UsuarioController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UsuarioController</servlet-name>
+    <url-pattern>/UsuarioController</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>RegistroUsuario</display-name>
+    <servlet-name>RegistroUsuario</servlet-name>
+    <servlet-class>controller.RegistroUsuario</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RegistroUsuario</servlet-name>
+    <url-pattern>/RegistroUsuario</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>CadastroUsuario</display-name>
+    <servlet-name>CadastroUsuario</servlet-name>
+    <servlet-class>controller.CadastroUsuario</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CadastroUsuario</servlet-name>
+    <url-pattern>/CadastroUsuario</url-pattern>
+  </servlet-mapping>
 </web-app>
